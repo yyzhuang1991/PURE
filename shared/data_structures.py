@@ -69,7 +69,7 @@ class Dataset:
 
 class Document:
     def __init__(self, js):
-        self._doc_key = js["doc_key"
+        self._doc_key = js["doc_key"]
         print(js)
         entries = fields_to_batches(js, ["doc_key", "clusters", "predicted_clusters", "section_starts"])
         sentence_lengths = [len(entry["sentences"]) for entry in entries]
