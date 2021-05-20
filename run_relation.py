@@ -79,7 +79,7 @@ def convert_examples_to_features(examples, label2id, max_seq_length, tokenizer, 
     for (ex_index, example) in enumerate(examples):
         if ex_index % 10000 == 0:
             logger.info("Writing example %d of %d" % (ex_index, len(examples)))
-
+        print(example)
         tokens = [CLS]
         SUBJECT_START = get_special_token("SUBJ_START")
         SUBJECT_END = get_special_token("SUBJ_END")
