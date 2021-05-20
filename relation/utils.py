@@ -78,7 +78,7 @@ def generate_relation_data(entity_data, use_gold=False, context_window=0):
                         continue
                     sub = sent_ner[x]
                     obj = sent_ner[y]
-                    label = gold_rel.get((sub.span, obj.span), 'no_relation')
+                    label = gold_rel.get((sub.span, obj.span), 'O')
                     sample = {}
                     sample['docid'] = doc._doc_key
                     sample['id'] = '%s@%d::(%d,%d)-(%d,%d)'%(doc._doc_key, sent.sentence_ix, sub.span.start_doc, sub.span.end_doc, obj.span.start_doc, obj.span.end_doc)
