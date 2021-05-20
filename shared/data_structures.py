@@ -254,6 +254,7 @@ class NER:
 
 class Relation:
     def __init__(self, relation, text, sentence_start):
+        print(relation, text, sentence_start)
         start1, end1 = relation[0], relation[1]
         start2, end2 = relation[2], relation[3]
         label = relation[4]

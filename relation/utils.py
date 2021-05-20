@@ -84,7 +84,6 @@ def generate_relation_data(entity_data, use_gold=False, context_window=0):
                     sample['id'] = '%s@%d::(%d,%d)-(%d,%d)'%(doc._doc_key, sent.sentence_ix, sub.span.start_doc, sub.span.end_doc, obj.span.start_doc, obj.span.end_doc)
                     sample['relation'] = label
                     sample['subj_start'] = sub.span.start_sent + sent_start
-                    print(">>>",sample["subj_start"], sub.span.start_sent, sent_start)
                     sample['subj_end'] = sub.span.end_sent + sent_start
                     sample['subj_type'] = sub.label
                     sample['obj_start'] = obj.span.start_sent + sent_start
