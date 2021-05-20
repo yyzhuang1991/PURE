@@ -127,10 +127,10 @@ class Sentence:
         self.sentence_ix = sentence_ix
 
 
->>> [[103, 106, 'Method']] 91 3
-[103, 106, 'Method'] 91 12
->>> [[126, 126, 'Generic']] 116 4
-[126, 126, 'Generic'] 116 10
+# >>> [[103, 106, 'Method']] 91 3
+# [103, 106, 'Method'] 91 12
+# >>> [[126, 126, 'Generic']] 116 4
+# [126, 126, 'Generic'] 116 10
 
 
         # Gold
