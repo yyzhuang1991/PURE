@@ -124,6 +124,7 @@ class Sentence:
         self.sentence_start = sentence_start
         self.text = entry["sentences"]
         self.sentence_ix = sentence_ix
+        print(sentence_start, sentence_ix)
         # Gold
         if "ner_flavor" in entry:
             self.ner = [NER(this_ner, self.text, sentence_start, flavor=this_flavor)
@@ -254,7 +255,7 @@ class NER:
 
 class Relation:
     def __init__(self, relation, text, sentence_start):
-        print(relation, text, sentence_start)
+
         start1, end1 = relation[0], relation[1]
         start2, end2 = relation[2], relation[3]
         label = relation[4]
