@@ -71,9 +71,7 @@ class Document:
     def __init__(self, js):
         self._doc_key = js["doc_key"]
         entries = fields_to_batches(js, ["doc_key", "clusters", "predicted_clusters", "section_starts"])
-        for d in entries:
-            if len(d["ner"]) > 0:
-                print(entries)
+
         sentence_lengths = [len(entry["sentences"]) for entry in entries]
         sentence_starts = np.cumsum(sentence_lengths)
         sentence_starts = np.roll(sentence_starts, 1)
@@ -140,7 +138,7 @@ class Sentence:
             self.ner = [NER(this_ner, self.text, sentence_start, flavor=this_flavor)
                         for this_ner, this_flavor in zip(entry["ner"], entry["ner_flavor"])]
         elif "ner" in entry:
-            print(">>>",entry["ner"], sentence_start,sentence_ix)
+
             self.ner = [NER(this_ner, self.text, sentence_start)
                         for this_ner in entry["ner"]]
         if "relations" in entry:
@@ -252,7 +250,7 @@ class Argument:
 class NER:
     def __init__(self, ner, text, sentence_start, flavor=None):
         self.span = Span(ner[0], ner[1], text, sentence_start)
-        print(ner, sentence_start, self.span.start_sent)
+        # print(ner, sentence_start, self.span.start_sent)
 
         self.label = ner[2]
         self.flavor = flavor
