@@ -130,7 +130,7 @@ class Sentence:
             self.ner = [NER(this_ner, self.text, sentence_start, flavor=this_flavor)
                         for this_ner, this_flavor in zip(entry["ner"], entry["ner_flavor"])]
         elif "ner" in entry:
-            print(entry["ner"])
+
             self.ner = [NER(this_ner, self.text, sentence_start)
                         for this_ner in entry["ner"]]
         if "relations" in entry:
@@ -242,6 +242,8 @@ class Argument:
 class NER:
     def __init__(self, ner, text, sentence_start, flavor=None):
         self.span = Span(ner[0], ner[1], text, sentence_start)
+        print(ner, sentence_start, self.span.start_sent)
+
         self.label = ner[2]
         self.flavor = flavor
 
