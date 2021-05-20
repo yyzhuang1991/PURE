@@ -13,6 +13,22 @@ python run_entity.py \
 
 
 python run_relation.py \
+  --task scierc\
+  --do_train \
+  --do_eval --eval_with_gold \
+  --train_file scierc_data/processed_data/json/train.json \
+  --val_file scierc_data/processed_data/json/dev.json \
+  --model bert-base-uncased \
+  --do_lower_case \
+  --train_batch_size 32 \
+  --eval_batch_size 32 \
+  --learning_rate 2e-5 \
+  --num_train_epochs 10 \
+  --context_window 0	\
+  --max_seq_length 228 	\
+  --output_dir ./temp/rel
+
+python run_relation.py \
   --task mars\
   --do_train \
   --do_eval --eval_with_gold \
