@@ -124,12 +124,13 @@ class Sentence:
         self.sentence_start = sentence_start
         self.text = entry["sentences"]
         self.sentence_ix = sentence_ix
-        print(self.sentence_ix)
+        # print(self.sentence_ix)
         # Gold
         if "ner_flavor" in entry:
             self.ner = [NER(this_ner, self.text, sentence_start, flavor=this_flavor)
                         for this_ner, this_flavor in zip(entry["ner"], entry["ner_flavor"])]
         elif "ner" in entry:
+            print(this_ner)
             self.ner = [NER(this_ner, self.text, sentence_start)
                         for this_ner in entry["ner"]]
         if "relations" in entry:
