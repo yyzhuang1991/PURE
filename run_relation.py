@@ -301,6 +301,7 @@ def main(args):
             label_list = json.load(f)
     else:
         label_list = [args.negative_label] + task_rel_labels[args.task]
+        print(task_rel_labels[args.task])
         with open(os.path.join(args.output_dir, 'label_list.json'), 'w') as f:
             json.dump(label_list, f)
     label2id = {label: i for i, label in enumerate(label_list)}
