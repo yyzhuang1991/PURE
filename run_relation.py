@@ -92,7 +92,7 @@ def convert_examples_to_features(examples, label2id, max_seq_length, tokenizer, 
         SUBJECT_END_NER = get_special_token("SUBJ_END=%s"%example['subj_type'])
         OBJECT_START_NER = get_special_token("OBJ_START=%s"%example['obj_type'])
         OBJECT_END_NER = get_special_token("OBJ_END=%s"%example['obj_type'])
-
+        print(example)
         for i, token in enumerate(example['token']):
             if i == example['subj_start']:
                 sub_idx = len(tokens)
@@ -127,7 +127,7 @@ def convert_examples_to_features(examples, label2id, max_seq_length, tokenizer, 
         input_ids += padding
         input_mask += padding
         segment_ids += padding
-        print(label2id)
+
         label_id = label2id[example['relation']]
         assert len(input_ids) == max_seq_length
         assert len(input_mask) == max_seq_length
@@ -301,7 +301,6 @@ def main(args):
             label_list = json.load(f)
     else:
         label_list = [args.negative_label] + task_rel_labels[args.task]
-        print(task_rel_labels[args.task])
         with open(os.path.join(args.output_dir, 'label_list.json'), 'w') as f:
             json.dump(label_list, f)
     label2id = {label: i for i, label in enumerate(label_list)}
