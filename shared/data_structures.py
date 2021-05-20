@@ -74,8 +74,10 @@ class Document:
         sentence_lengths = [len(entry["sentences"]) for entry in entries]
         sentence_starts = np.cumsum(sentence_lengths)
         sentence_starts = np.roll(sentence_starts, 1)
+
         sentence_starts[0] = 0
         self.sentence_starts = sentence_starts
+        print(sentence_starts)
         self.sentences = [Sentence(entry, sentence_start, sentence_ix)
                           for sentence_ix, (entry, sentence_start)
                           in enumerate(zip(entries, sentence_starts))]
