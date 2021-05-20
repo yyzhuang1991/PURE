@@ -17,7 +17,7 @@ python run_relation.py \
   --do_train \
   --do_eval --eval_with_gold \
   --train_file /uusoc/res/nlp/nlp/yuan/mars/transform_data_for_other_models/pure_data/train/EM.extracted_gold_docs.json \
-  --val_file /uusoc/res/nlp/nlp/yuan/mars/transform_data_for_other_models/pure_data/val/EM.extracted_gold_docs.json
+  --val_file /uusoc/res/nlp/nlp/yuan/mars/transform_data_for_other_models/pure_data/val/EM.extracted_gold_docs.json \
   --model bert-base-uncased \
   --do_lower_case \
   --train_batch_size 32 \
