@@ -106,9 +106,10 @@ def convert_examples_to_features(examples, label2id, max_seq_length, tokenizer, 
                 tokens.append(SUBJECT_END_NER)
             if i == example['obj_end']:
                 tokens.append(OBJECT_END_NER)
-        print(example, sub_idx,  obj_idx, example["subj_start"], example["obj_start"])
-        print(">>", tokens)
         tokens.append(SEP)
+
+        if example["subj_type"] != "Target":
+            continue
 
         num_tokens += len(tokens)
         max_tokens = max(max_tokens, len(tokens))
