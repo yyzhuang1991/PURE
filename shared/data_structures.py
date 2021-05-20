@@ -77,7 +77,6 @@ class Document:
 
         sentence_starts[0] = 0
         self.sentence_starts = sentence_starts
-        print(sentence_starts)
         self.sentences = [Sentence(entry, sentence_start, sentence_ix)
                           for sentence_ix, (entry, sentence_start)
                           in enumerate(zip(entries, sentence_starts))]
