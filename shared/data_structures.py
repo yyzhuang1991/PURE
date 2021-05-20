@@ -123,6 +123,7 @@ class Sentence:
     def __init__(self, entry, sentence_start, sentence_ix):
         self.sentence_start = sentence_start
         self.text = entry["sentences"]
+        print(self.text)
         self.sentence_ix = sentence_ix
         # Gold
         if "ner_flavor" in entry:
