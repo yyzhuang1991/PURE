@@ -518,5 +518,6 @@ if __name__ == "__main__":
                         help="Whether to add new tokens as marker tokens instead of using [unusedX] tokens.")
 
     args = parser.parse_args()
-    if args.task == "mars": args.negative_label = "O"
+    if args.task == "mars": 
+        args.negative_label = "O"
     main(args)
