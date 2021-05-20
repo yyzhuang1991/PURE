@@ -71,6 +71,7 @@ class Document:
     def __init__(self, js):
         self._doc_key = js["doc_key"]
         entries = fields_to_batches(js, ["doc_key", "clusters", "predicted_clusters", "section_starts"])
+        print(entries)
         sentence_lengths = [len(entry["sentences"]) for entry in entries]
         sentence_starts = np.cumsum(sentence_lengths)
         sentence_starts = np.roll(sentence_starts, 1)
@@ -124,6 +125,13 @@ class Sentence:
         self.sentence_start = sentence_start
         self.text = entry["sentences"]
         self.sentence_ix = sentence_ix
+
+
+>>> [[103, 106, 'Method']] 91 3
+[103, 106, 'Method'] 91 12
+>>> [[126, 126, 'Generic']] 116 4
+[126, 126, 'Generic'] 116 10
+
 
         # Gold
         if "ner_flavor" in entry:
