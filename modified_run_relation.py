@@ -275,8 +275,11 @@ def main(args):
         train_dataset, train_examples, train_nrel = generate_relation_data(args.train_file, use_gold=True, context_window=args.context_window)
 
     # dev set
-    if (args.do_eval and args.do_train):
-        eval_dataset, eval_examples, eval_nrel = generate_relation_data(args.val_file, use_gold=True, context_window=args.context_window)
+    if (args.do_eval and args.do_train) or (args.do_eval and not(args.eval_test)):
+        eval_dataset, eval_examples, eval_nrel = generate_relation_data(args.val_file, use_gold=args.eval_with_gold, context_window=args.context_window)
+    # test set
+    if args.eval_test:
+        test_dataset, test_examples, test_nrel = generate_relation_data(os.path.join(args.entity_output_dir, args.entity_predictions_test), use_gold=args.eval_with_gold, context_window=args.context_window)
 
     setseed(args.seed)
 
@@ -479,8 +482,6 @@ if __name__ == "__main__":
     parser.add_argument("--negative_label", default="no_relation", type=str)
     parser.add_argument("--do_train", action='store_true', help="Whether to run training.")
     parser.add_argument("--train_file", default=None, type=str, help="The path of the training data.")
-    parser.add_argument("--val_file", default=None, type=str, help="The path of the val data.")
-
     parser.add_argument("--train_mode", type=str, default='random_sorted', choices=['random', 'sorted', 'random_sorted'])
     parser.add_argument("--do_eval", action='store_true', help="Whether to run eval on the dev set.")
     parser.add_argument("--do_lower_case", action='store_true', help="Set this flag if you are using an uncased model.")
